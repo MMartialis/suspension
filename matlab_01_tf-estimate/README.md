@@ -1,0 +1,2 @@
+This matlab file reads a log made by the raspberry, and plots out the input accelaration and output.
+It is a good idea to use this version of the file with the `grass-air-closed.csv` log file in the logs folder.

@@ -1,0 +1,2 @@
+These two files do the same things, the only differece is that one runs single core on the CPU, the other utilizes all cores. The multi-core version is faster, but it may cause your PC to run slow until it finishes. Also, the graph will not change over time, it will only appear after the program finishes.
+The single core is more stable. You may select the `grass-air-closed.csv` file with these scripts.

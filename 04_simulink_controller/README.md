@@ -1,0 +1,2 @@
+Using the stateSpace model, the hardware parameters were determined. They can be used in this script. This script takes in one of the logs created, they already contain the determined transfer function, and they control the output.
+Running the simulink mode, the log needs to be selected. For this, `grass-80to100-valve.csv` can be used. Optimum seeking control will adjust the damping in a way to find the pest performance.

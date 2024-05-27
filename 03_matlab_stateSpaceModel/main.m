@@ -93,8 +93,8 @@ plot(time, in,  'LineWidth', 1.5);
 plot(time, valve);
 % plot(time, acc_in);
 % plot(time, acc_out);
-xlabel('Time');
-ylabel('Velocity:m/s');
+xlabel('Time [s]');
+ylabel('Velocity [m/s]');
 title('Filtered Signal');
 legend('Output', 'Input', 'Valve', 'ACC in', 'ACC out');
 grid on;
@@ -108,10 +108,10 @@ drawnow;
 
 u = [valve cumtrapz(in) in]; % Input signal (valve, pos, vel)
 var = 0.1; % Variance for mutation
-G = 50; % Number of generations (increase for better results)
-G_2 = 10; % Number of generations inside one learning step
-P = 5000; % Population size  
-p = 2500; % Number of top mutations to keep
+G = 1; % Number of generations (increase for better results)
+G_2 = 1; % Number of generations inside one learning step
+P = 50; % Population size  
+p = 25; % Number of top mutations to keep
 
 
 % m1, m2, b1, b2, b3, k1, k2
@@ -146,8 +146,8 @@ for g = 1:G
         plot(time, best_outs(:, i));
     end
     title('Best Mutations');
-    xlabel('Time');
-    ylabel('ACC:m/s^2');
+    xlabel('Time [s]');
+    ylabel('Velocity [m/s]');
     legend('output', 'input', 'Mutation 1', 'Mutation 2', 'Mutation 3', 'Mutation 4', 'Mutation 5');
     grid on;
     drawnow;

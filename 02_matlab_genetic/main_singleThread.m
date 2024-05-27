@@ -93,8 +93,8 @@ plot(time, in,  'LineWidth', 1.5);
 plot(time, valve);
 % plot(time, acc_in);
 % plot(time, acc_out);
-xlabel('Time');
-ylabel('Velocity:m/s');
+xlabel('Time [s]');
+ylabel('Acceleration [m/s^2]');
 title('Filtered Signal');
 legend('Output', 'Input', 'Valve', 'ACC in', 'ACC out');
 grid on;
@@ -103,7 +103,7 @@ drawnow;
 
 
 %%%%%%%%%%%%%%%%%%
-% stupid algorithm
+% single core algorithm
 %%%%%%%%%%%%%%%%%%
 
 theta_b = [12 19 500]; %m D k
@@ -111,7 +111,7 @@ offset_b = -10;
 Error_b = inf;
 var_1 = 0.1;
 
-G = 10000;
+G = 50000;
 
 for g = 1:G
     theta_g = normrnd(theta_b, var_1*theta_b*(1-(g/G)));
@@ -126,11 +126,22 @@ for g = 1:G
         theta_b = theta_g;
         offset_b = offset_g;
         Error_b = Error_g;
-
         figure(3)
-        plot(time,out,time,A_out)
+        clf;
+        plot(time,out, 'b', 'LineWidth', 1)
+        hold on;
+        plot(time,A_out, 'r', 'LineWidth', 1)
+        title(['Velocity Input vs. Output (generation ', num2str(g), ')']);
+        xlabel('Time [s]');
+        ylabel('Acceleration [m/s^2]');
+        legend('Measured output', 'Estimated output');
         pause(0.1)
 
+        
+    end
+    
+    if G == g
+        title(['Velocity Input vs. Output (generation ', num2str(g), ')']);
     end
 
 end
@@ -138,7 +149,7 @@ end
 
 %%
 %%%%%%%%%%%%%%%%%%
-% clever algorithm
+% multi core algorithm
 %%%%%%%%%%%%%%%%%%
 
 % theta_bs = zeros(100, 4); % Initialize theta_bs matrix
@@ -186,8 +197,8 @@ end
 %         plot(time, A_out);
 %     end
 %     title('Best Mutations');00
-%     xlabel('Time');
-%     ylabel('ACC:m/s^2');
+%     xlabel('Time [s]');
+%     ylabel('Acceleration [m/s^2]');
 %     legend('Mutation 1', 'Mutation 2', 'Mutation 3', 'Mutation 4', 'Mutation 5');
 %     grid on;
 

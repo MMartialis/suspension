@@ -93,8 +93,8 @@ plot(time, in,  'LineWidth', 1.5);
 plot(time, valve);
 % plot(time, acc_in);
 % plot(time, acc_out);
-xlabel('Time');
-ylabel('Velocity:m/s');
+xlabel('Time [s]');
+ylabel('Acceleration [m/s^2]');
 title('Filtered Signal');
 legend('Output', 'Input', 'Valve', 'ACC in', 'ACC out');
 grid on;
@@ -103,7 +103,7 @@ drawnow;
 
 
 %%%%%%%%%%%%%%%%%%
-% stupid algorithm
+% single core algorithm
 %%%%%%%%%%%%%%%%%%
 
 % theta_b = [12 19 500]; %m D k
@@ -138,7 +138,7 @@ drawnow;
 
 %%
 %%%%%%%%%%%%%%%%%%
-% clever algorithm
+% multi core algorithm
 %%%%%%%%%%%%%%%%%%
 
 theta_bs = zeros(100, 4); % Initialize theta_bs matrix
@@ -186,8 +186,8 @@ for g_1 = 1:G_1
         plot(time, A_out);
     end
     title('Best Mutations');
-    xlabel('Time');
-    ylabel('ACC:m/s^2');
+    xlabel('Time [s]');
+    ylabel('Acceleration [m/s^2]');
     legend('Mutation 1', 'Mutation 2', 'Mutation 3', 'Mutation 4', 'Mutation 5');
     grid on;
 

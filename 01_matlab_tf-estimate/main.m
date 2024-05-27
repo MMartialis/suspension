@@ -77,10 +77,10 @@ tf_model = tfest(idata, 2, 1);
 %% Plot the results
 
 figure(1);
-title('Acceleration Input vs. Output');
-plot(time, acc_in, 'b', 'LineWidth', 1.5);
+plot(time, acc_in, 'b', 'LineWidth', 1);
 hold on;
-plot(time, acc_out, 'r', 'LineWidth', 1.5);
+plot(time, acc_out, 'r', 'LineWidth', 1);
+title('Acceleration Input vs. Output');
 xlabel('Time [s]');
 ylabel('Acceleration [m/s^2]');
 legend('Input', 'Output');
